@@ -1,26 +1,31 @@
 <?php
 require_once '/xampp/htdocs/hominis/mvc/config/datebase.php';
 require_once '/xampp/htdocs/hominis/mvc/app/controller/LoginController.php';
-require '../app/controllers/AfiliacionController.php';
+require '/xampp/htdocs/hominis/mvc/app/controller/AfiliacionController.php';
 
 $controller = new LoginController($pdo);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+//Formulario Login
+/* if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controller->IniciarSesion();
-} elseif (isset($_GET['home'])) {
+} else if (isset($_GET['home'])) {
     include '/xampp/htdocs/hominis/mvc/resources/views/home.php';
 } else {
     include '/xampp/htdocs/hominis/mvc/resources/views/login.php';
 
-}
+} */
 
-$controller = new AfiliacionController();
+$afiliacion = new AfiliacionController($pdo);
+//Formulario Afiliacion
 
-if ($_SERVER['REQUEST_URI'] === '/afiliacion/mostrar') {
-    $controller->mostrarFormulario();
-} elseif ($_SERVER['REQUEST_URI'] === '/afiliacion/procesar') {
-    $controller->procesarFormulario();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $afiliacion->procesarFormulario();
+} else if (isset($_GET['confirmacion'])) {
+    include '/xampp/htdocs/hominis/mvc/resources/views/confirmacion.php';
 } else {
-    echo "Ruta no encontrada";
+    include '/xampp/htdocs/hominis/mvc/resources/views/record.php';
+
 }
 ?>

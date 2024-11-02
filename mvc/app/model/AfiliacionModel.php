@@ -9,8 +9,9 @@ class AfiliacionModel {
     public function guardarAfiliacion($datos) {
         $sql = "INSERT INTO afiliaciones (nombre, apellido, dni, direccion, telefono, email, fecha_nacimiento) 
                 VALUES (:nombre, :apellido, :dni, :direccion, :telefono, :email, :fecha_nacimiento)";
-        
         $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute($datos); 
+        $stmt->execute($datos); 
+        return $stmt->rowCount() > 0; // Devuelve true si se insertó al menos una fila
+
     }
 }
