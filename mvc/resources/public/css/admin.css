@@ -4,9 +4,12 @@
     box-sizing: border-box;
 }
 .login{
-  background-image: url('../img/fondo_login.jpg');
+  background-image: url('../img/background-login.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+}
+.offcanvas-body, .offcanvas-header{
+  background-color: #0D6EFD !important;
 }
