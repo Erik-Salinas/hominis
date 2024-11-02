@@ -1,5 +1,5 @@
 <?php
-require_once '/xampp/htdocs/hominis/mvc/app/model/LoginModel.php'
+require_once '/xampp/htdocs/hominis/mvc/app/model/LoginModel.php';
 
 class LoginController{
     private $model;
