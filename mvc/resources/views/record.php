@@ -25,13 +25,13 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link fs-5" aria-current="page" href="home.html">Inicio</a>
+                                <a class="nav-link fs-5" aria-current="page" href="/hominis/mvc/resources/views/home.php">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active  fs-5" href="record.html">Registro</a>
+                                <a class="nav-link active  fs-5" href="/hominis/mvc/resources/views/record.php">Registro</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link fs-5" href="shifts.html">Turnos</a>
+                                <a class="nav-link fs-5" href="/hominis/mvc/resources/views/shifts.php">Turnos</a>
                             </li>
                         </ul>
                     </div>
@@ -70,7 +70,7 @@
     <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
     <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
     <br><br>
-
+    <input type="hidden" name="formulario" value="afiliacion">
     <button type="submit">Enviar Solicitud</button>
 </form>
     </main>
