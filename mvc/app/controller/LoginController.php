@@ -17,9 +17,9 @@ class LoginController{
             $resultado = $this->model->ingreso($user, $password);
     
             if ($resultado) {
-                header('Location: http://localhost:8080/hominis/mvc/index.php?home');
+                header('Location: http://localhost/hominis/mvc/index.php?home');
             } else {
-                header('Location: http://localhost:8080/hominis/mvc/resources/views/login.php');
+                header('Location: http://localhost/hominis/mvc/resources/views/login.php');
             }
             
             exit();

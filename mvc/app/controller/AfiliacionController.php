@@ -8,15 +8,13 @@ class AfiliacionController {
         $this->modelo = new AfiliacionModel($pdo);
     }
     
-    public function mostrarFormulario() {
-        require 'app/views/afiliacion/formulario.php';
+    /* public function mostrarFormulario($showModal = false) {
+        // Incluye la vista y pasa el valor de $showModal
+        require 'app/views/record.php';
     }
-
+ */
     public function procesarFormulario() {
-        
-
-        
-        //Validar
+        // Validar
         $datos = [
             'nombre' => htmlspecialchars($_POST['nombre']),
             'apellido' => htmlspecialchars($_POST['apellido']),
@@ -30,8 +28,9 @@ class AfiliacionController {
         $resultado = $this->modelo->guardarAfiliacion($datos);
         
         if ($resultado) {
-            //require 'app/views/afiliacion/confirmacion.php';
-            header('Location: http://localhost:8080/hominis/mvc/index.php?confirmacion');
+            // Redirige a la misma página pero con un parámetro para mostrar la modal
+            header('Location: http://localhost/hominis/mvc/resources/views/record.php');
+            exit();
         } else {
             echo "Error al procesar la afiliación.";
         }
