@@ -1,6 +1,7 @@
 <?php
 require_once '/xampp/htdocs/hominis/mvc/app/model/LoginModel.php';
 
+//HOLA ERIK, ESPERO QUE TE LLEGUE MI MENSAJE :)
 class LoginController{
     private $model;
     
