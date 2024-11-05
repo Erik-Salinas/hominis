@@ -13,7 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (isset($_POST['formulario']) && $_POST['formulario'] === 'afiliacion') {
         $afiliacion->procesarFormulario();
     }
+<<<<<<< HEAD
 } elseif (isset($_GET['home'])) {
+=======
+} elseif (isset($_GET['action']) && $_GET['action'] === 'logout') {
+    $controller->CerrarSesion();
+}elseif (isset($_GET['home'])) {
+>>>>>>> 938f11ffbbd1dc22907d9ed0585b791898034820
     include '/xampp/htdocs/hominis/mvc/resources/views/home.php';
 } else {
     include '/xampp/htdocs/hominis/mvc/resources/views/login.php';
