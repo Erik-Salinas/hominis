@@ -12,9 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $controller->IniciarSesion();
     } elseif (isset($_POST['formulario']) && $_POST['formulario'] === 'afiliacion') {
         $afiliacion->procesarFormulario();
-        /* $afiliacion->mostrarFormulario(); */
-/*     include '/xampp/htdocs/hominis/mvc/resources/views/record.php';
- */    }
+    }
 } elseif (isset($_GET['home'])) {
     include '/xampp/htdocs/hominis/mvc/resources/views/home.php';
 } else {
