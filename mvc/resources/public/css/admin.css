@@ -15,6 +15,9 @@
   height: 18rem;
   margin:  0 8rem;
 }
+.affiliate a{
+  width: 150px;
+}
 
 /* *Styles bootstrap */
 .fixed-top {
