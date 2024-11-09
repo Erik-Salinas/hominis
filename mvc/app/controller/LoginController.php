@@ -27,7 +27,7 @@ class LoginController{
                 $_SESSION['password'] = $password;
                 var_dump($_SESSION);
     
-                header('Location: http://localhost/hominis/mvc/index.php?home');
+                header('Location: http://localhost/hominis/mvc/resources/views/home.php');
             } else {
                 header('Location: http://localhost/hominis/mvc/resources/views/login.php');
             }
