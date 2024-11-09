@@ -16,7 +16,7 @@ class AfiliacionModel {
     }
 
     public function editarAfiliado($id){
-        $sql = 
+        
     }
 
     public function eliminarAfiliado($dni){
