@@ -28,15 +28,6 @@
                             <li class="nav-item">
                                 <a class="nav-link fs-5" aria-current="page" href="/hominis/mvc/resources/views/home.php">Inicio</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active fs-5" href="/hominis/mvc/resources/views/record.php">Registro</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link fs-5" href="/hominis/mvc/resources/views/shifts.php">Turnos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="fs-6 btn btn-danger" href="/hominis/mvc/index.php?action=logout">Cerrar Sesion</a>
-                            </li>
                         </ul>
                     </div>
                 </div>

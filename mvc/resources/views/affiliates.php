@@ -31,9 +31,9 @@
                                 <a class="nav-link fs-5" aria-current="page" href="/hominis/mvc/resources/views/home.php">Inicio</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link  fs-5" href="/hominis/mvc/resources/views/affiliates.php">Afiliados</a>                            </li>
+                            <a class="nav-link active fs-5" href="/hominis/mvc/resources/views/affiliates.php">Afiliados</a>                            </li>
                             <li class="nav-item">
-                                <a class="nav-link active  fs-5" href="/hominis/mvc/resources/views/shifts.php">Turnos</a>
+                                <a class="nav-link   fs-5" href="/hominis/mvc/resources/views/shifts.php">Turnos</a>
                             </li>
                             <li class="nav-item">
                                 <a class="fs-6 btn btn-danger" href="/hominis/mvc/index.php?action=logout">Cerrar Sesion</a>
@@ -45,6 +45,57 @@
         </nav>
     </header>
     <main>
+        <section>
+            <h1>AFILIADOS</h1>
+            <div>
+                <button type="submit">Agregar</button>
+            </div>
+        </section>
+    </main>
+    <?php 
+
+require '/xampp/htdocs/hominis/mvc/config/datebase.php';
+
+$sql = "SELECT * FROM afiliaciones";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+
+// Obtener todos los resultados en un arreglo asociativo
+$afiliados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Inicializamos una variable para almacenar el contenido
+$contenido = "";
+
+// Mostrar los datos
+foreach ($afiliados as $afiliado) {
+    // Aplicar ucfirst antes de generar el contenido HTML
+    $nombre = ucfirst($afiliado['nombre']);
+    $apellido = ucfirst($afiliado['apellido']);
+    $direccion = ucfirst($afiliado['direccion']);
+
+    // Usamos comillas invertidas (heredoc) para construir el HTML
+    $contenido .= <<<HTML
+    <div class='d-flex justify-content-center mt-5'>
+        <div>
+            <p class='fs-5'> <span class='fw-bold'> ID:  </span>{$afiliado['id_afiliado']}</p>
+            <p class='fs-5'> <span class='fw-bold'> Nombre y Apellido:  </span>{$nombre} {$apellido}</p>
+            <p class='fs-5'> <span class='fw-bold'> DNI:  </span>{$afiliado['dni']}</p>
+            <p class='fs-5'> <span class='fw-bold'> Teléfono:  </span>{$afiliado['telefono']}</p>
+            <p class='fs-5'> <span class='fw-bold'> Dirección:  </span>{$direccion}</p>
+            <p class='fs-5'> <span class='fw-bold'> Email:  </span>{$afiliado['email']}</p>
+HTML;
+
+    // Formatear la fecha de nacimiento
+    $fechaNacimiento = new DateTime($afiliado['fecha_nacimiento']);
+    $contenido .= "<p class='fs-5'> <span class='fw-bold'> Fecha de Nacimiento: </span>" . $fechaNacimiento->format('d/m/Y') . "</p>";
+
+    // Cerramos las etiquetas del div
+    $contenido .= "</div></div>";
+}
+
+// Finalmente, mostramos todo el contenido de una vez
+echo $contenido;
+    ?>
     </main>
     <footer>
 

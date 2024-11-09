@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2024 a las 22:45:34
+-- Tiempo de generación: 05-11-2024 a las 00:05:53
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -40,24 +40,40 @@ CREATE TABLE `afiliaciones` (
   `fecha_nacimiento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `afiliaciones`
+--
+
+INSERT INTO `afiliaciones` (`id_afiliado`, `nombre`, `apellido`, `dni`, `direccion`, `telefono`, `email`, `fecha_nacimiento`) VALUES
+(1, 'victoria', 'rios', 11234567, 'corrientes3934', 1122334455, 'mvriosdonadeo@emae.edu.ar', '2003-09-15'),
+(2, 'erik', 'salinas', 99668452, 'corrientes3934', 1122334455, 'mvriosdonadeo@emae.edu.ar', '2003-09-14'),
+(3, 'valeria', 'donadeo', 44632875, 'corrientes3934', 1166558899, 'v@gmail.com', '1974-11-08');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `login`
+-- Estructura de tabla para la tabla `empleado`
 --
 
-CREATE TABLE `login` (
-  `id_usuario` int(11) NOT NULL,
-  `user` text DEFAULT NULL,
-  `password` text DEFAULT NULL
+CREATE TABLE `empleado` (
+  `id_empleado` int(11) NOT NULL,
+  `nombre` text NOT NULL,
+  `apellido` text NOT NULL,
+  `dni` int(11) NOT NULL,
+  `telefono` int(11) NOT NULL,
+  `direccion` text NOT NULL,
+  `email` text NOT NULL,
+  `fecha_nacimiento` date NOT NULL,
+  `user` text NOT NULL,
+  `password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `login`
+-- Volcado de datos para la tabla `empleado`
 --
 
-INSERT INTO `login` (`id_usuario`, `user`, `password`) VALUES
-(1, 'vicky', '123');
+INSERT INTO `empleado` (`id_empleado`, `nombre`, `apellido`, `dni`, `telefono`, `direccion`, `email`, `fecha_nacimiento`, `user`, `password`) VALUES
+(1, 'victoria', 'rios', 44938279, 1122334455, 'corrientes 3439', 'mvriosdonadeo@emae.edu.ar', '2003-09-15', 'vicky', '123');
 
 --
 -- Índices para tablas volcadas
@@ -70,10 +86,10 @@ ALTER TABLE `afiliaciones`
   ADD PRIMARY KEY (`id_afiliado`);
 
 --
--- Indices de la tabla `login`
+-- Indices de la tabla `empleado`
 --
-ALTER TABLE `login`
-  ADD PRIMARY KEY (`id_usuario`);
+ALTER TABLE `empleado`
+  ADD PRIMARY KEY (`id_empleado`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -83,13 +99,13 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT de la tabla `afiliaciones`
 --
 ALTER TABLE `afiliaciones`
-  MODIFY `id_afiliado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_afiliado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `login`
+-- AUTO_INCREMENT de la tabla `empleado`
 --
-ALTER TABLE `login`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `empleado`
+  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

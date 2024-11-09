@@ -3,12 +3,22 @@
     margin: 0;
     box-sizing: border-box;
 }
+/* *My styles */
 .login{
   background-image: url('../img/background-login.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+}
+.homeEmployee{
+  height: 18rem;
+  margin:  0 8rem;
+}
+
+/* *Styles bootstrap */
+.fixed-top {
+  position:initial;
 }
 .offcanvas-body, .offcanvas-header{
   background-color: #0D6EFD !important;
