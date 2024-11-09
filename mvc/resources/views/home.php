@@ -45,7 +45,7 @@
             </div>
         </nav>
     </header>
-    <main>
+    <main class="container">
         <br>
         <br>
         <br>
@@ -54,6 +54,7 @@ require '/xampp/htdocs/hominis/mvc/config/datebase.php';
 $user = $_SESSION['user'];
 $password = $_SESSION['password'];
 
+// Obtener los datos del empleado
 $sql = "SELECT * FROM empleado WHERE user = :user AND password = :password";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(':user', $user);
@@ -66,7 +67,7 @@ $empleados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // Inicializamos una variable para almacenar el contenido
 $contenido = "";
 
-// Mostrar los datos
+// Mostrar los datos del empleado
 foreach ($empleados as $empleado) {
     // Aplicar ucfirst antes de generar el contenido HTML
     $nombre = ucfirst($empleado['nombre']);
@@ -93,6 +94,46 @@ HTML;
     // Cerramos las etiquetas del div
     $contenido .= "</div></div>";
 }
+
+// Obtener los últimos 5 registros de turnos
+$sql = "SELECT * FROM turnos ORDER BY id_turno DESC LIMIT 5";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$turnos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//
+// Mostrar los turnos
+$contenido .= "<table class='table table-primary table-hover mt-5'>
+        <h3 class='mt-5 text-decoration-underline'>Ultimos Turnos Dados</h3>
+        <tr>
+        <th scope='col' class='fs-5 text-center'>Nombre y Apellido</th>
+        <th scope='col' class='fs-5 text-center'>DNI</th>
+        <th scope='col' class='fs-5 text-center'>Email</th>
+        <th scope='col' class='fs-5 text-center'>Telefono</th>
+        <th scope='col' class='fs-5 text-center'>Especialidad</th>
+        <th scope='col'class='fs-5 text-center'>Fecha y Hora</th>
+        </tr>
+    ";
+
+foreach ($turnos as $turno) {
+    $nombre = ucfirst($turno['nombre_paciente']);
+    $apellido = ucfirst($turno['apellido_paciente']);
+    $especialidad = ucfirst($turno['especialidad']);
+    $fechaTurno = new DateTime($turno['diaHora']);
+    $fechaFormateada = $fechaTurno->format('d/m/Y H:i'); // Formatear la fecha
+
+    $contenido .= <<<HTML
+    <tr>
+        <td class='fs-5 text-center' > {$nombre} {$apellido}</td>
+        <td class='fs-5 text-center'> {$turno['dni_paciente']}</td>
+        <td class='fs-5 text-center'> {$turno['email_paciente']}</td>
+        <td class='fs-5 text-center'>{$turno['tel_paciente']}</td>
+        <td class='fs-5 text-center'>{$especialidad}</td>           
+        <td class='fs-5 text-center'>{$fechaFormateada}hs</td>
+    </tr>
+HTML;
+}
+
+$contenido .= "</table>";
 
 // Finalmente, mostramos todo el contenido de una vez
 echo $contenido;

@@ -14,4 +14,15 @@ class AfiliacionModel {
         return $stmt->rowCount() > 0; // Devuelve true si se insertó al menos una fila
 
     }
+
+    public function editarAfiliado($id){
+        $sql = 
+    }
+
+    public function eliminarAfiliado($dni){
+        $sql = 'DELETE FROM afiliaciones WHERE dni = :dni';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':dni', $dni);  // Víncula el valor directamente
+        $stmt->execute();
+    }    
 }

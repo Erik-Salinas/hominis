@@ -29,6 +29,20 @@ class AfiliacionController {
         
         if ($resultado) {
             // Redirige a la misma página pero con un parámetro para mostrar la modal
+            header('Location: http://localhost/hominis/mvc/resources/views/affiliates.php?modal=1');
+            exit();
+        } else {
+            echo "Error al procesar la afiliación.";
+        }
+    }
+
+    public function editar(){
+
+        $dni = htmlspecialchars($_POST['dni']);
+
+        $resultado = $this->modelo->editarAfiliado($dni);
+        if ($resultado) {
+            // Redirige a la misma página pero con un parámetro para mostrar la modal
             header('Location: http://localhost/hominis/mvc/resources/views/record.php');
             exit();
         } else {
