@@ -32,8 +32,14 @@ class AfiliacionController {
 
     public function editarDatos() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Recibir los datos del formulario
-            $id = $_POST['id'];  // Asegúrate de que este ID está siendo enviado correctamente desde el modal
+            $id_afiliado = $_POST['id_afiliado'] ?? null;
+
+            // Verificar que el id_afiliado no esté vacío o nulo
+            if (!$id_afiliado) {
+                exit('Error: ID no recibido. Verifique que el formulario de edición esté enviando el ID correctamente.');
+            }
+    
+            // Resto de los datos
             $nombre = $_POST['nombre'];
             $apellido = $_POST['apellido'];
             $dni = $_POST['dni'];
@@ -43,18 +49,15 @@ class AfiliacionController {
             $fecha_nacimiento = $_POST['fecha_nacimiento'];
     
             // Llamar a la función del modelo para editar los datos
-            $this->modelo->editarAfiliado($id, $dni, $nombre, $apellido, $direccion, $telefono, $email, $fecha_nacimiento);
+            $this->modelo->editarAfiliado($id_afiliado, $dni, $nombre, $apellido, $direccion, $telefono, $email, $fecha_nacimiento);
             
-            // Redirigir a una página de éxito o de vuelta a la lista de afiliados
+            // Redirigir después de la edición
             header('Location: /hominis/mvc/resources/views/affiliates.php');
             exit();
         }
     }
-    
-    
-
-    public function eliminar($dni) {
-        $resultado = $this->modelo->eliminarAfiliado($dni);
+    public function eliminar($id) {
+        $resultado = $this->modelo->eliminarAfiliado($id);
         header('Location: http://localhost/hominis/mvc/resources/views/affiliates.php');
         exit();
         

@@ -9,6 +9,15 @@
     <title>Login</title>
 </head>
 <body>
+    <?php
+    // Evitar que se almacene en caché
+   // Evitar que se almacene en caché
+header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: 0');
+
+
+    ?>
     <main>
         <section class="login   d-flex  align-items-center justify-content-center">
             <form action="/hominis/mvc/index.php" method="post" class=" d-flex flex-column bg-white w-25 p-4 rounded border border-2" autocomplete="off">

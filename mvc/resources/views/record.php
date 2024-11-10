@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../public/css/admin.css">
 </head>
-<?php session_start(); ?>
+<?php session_start(); 
+if (!isset($_SESSION['user'])) {
+    header('Location: login.php');
+    exit();
+};?>
 
 <body>
 <header>

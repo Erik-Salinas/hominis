@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../public/css/admin.css">
 </head>
-<?php session_start(); ?>
+<?php session_start(); 
+if (!isset($_SESSION['user'])) {
+    header('Location: login.php');
+    exit();
+};?>
 <body>
     <header>
         <nav class="navbar navbar-dark bg-primary fixed-top">
@@ -61,6 +65,7 @@
                         <th>EMAIL</th>
                         <th>FECHA DE NACIMIENTO</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
@@ -93,7 +98,7 @@ foreach ($afiliados as $afiliado) {
     echo "<td>{$fechaNacimientoFormateada}</td>";
     // Aquí agregamos los atributos data- para enviar los datos al modal
     echo "<td><a href='#' data-bs-toggle='modal' data-bs-target='#exampleModal' data-id='{$afiliado['id_afiliado']}' data-nombre='{$afiliado['nombre']}' data-apellido='{$afiliado['apellido']}' data-dni='{$afiliado['dni']}' data-direccion='{$afiliado['direccion']}' data-telefono='{$afiliado['telefono']}' data-email='{$afiliado['email']}' data-fecha='{$afiliado['fecha_nacimiento']}'><i class='bi bi-pencil'></i></a></td>";
-    echo "<td><a href='/hominis/mvc/index.php?action=delet&dni={$afiliado['dni']}' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este afiliado?\");'><i class='bi bi-trash'></i></a></td>";
+    echo "<td><a href='/hominis/mvc/index.php?action=delet&id={$afiliado['id_afiliado']}' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este afiliado?\");'><i class='bi bi-trash'></i></a></td>";
     echo "</tr>";
 }
 ?>
@@ -111,7 +116,7 @@ foreach ($afiliados as $afiliado) {
             </div>
             <div class="modal-body d-flex align-items-center justify-content-center flex-column">
     <form action="../../index.php?action=editarDatos" method="post" class="border border-1 border-dark rounded w-100 p-3 d-flex flex-wrap flex-column gap-1 mt-3">
-        <input type="hidden" id="id" name="id"> 
+        <input type="number" id="id_afiliado" name="id_afiliado" value="">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
         <label for="apellido">Apellido:</label>
@@ -144,31 +149,32 @@ foreach ($afiliados as $afiliado) {
 
     </footer>
     <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const exampleModal = document.getElementById('exampleModal');
-    exampleModal.addEventListener('show.bs.modal', function (event) {
-        const button = event.relatedTarget; // Botón que abrió el modal
-        // Extraer la información de los atributos data- del botón
-        const id = button.getAttribute('data-id');
-        const nombre = button.getAttribute('data-nombre');
-        const apellido = button.getAttribute('data-apellido');
-        const dni = button.getAttribute('data-dni');
-        const direccion = button.getAttribute('data-direccion');
-        const telefono = button.getAttribute('data-telefono');
-        const email = button.getAttribute('data-email');
-        const fechaNacimiento = button.getAttribute('data-fecha');
+        document.addEventListener("DOMContentLoaded", function () {
+            event.preventDefault();
+            const exampleModal = document.getElementById('exampleModal');
+            exampleModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget; // Botón que abrió el modal
+                // Extraer la información de los atributos data- del botón
+                const id = button.getAttribute('data-id');
+                const nombre = button.getAttribute('data-nombre');
+                const apellido = button.getAttribute('data-apellido');
+                const dni = button.getAttribute('data-dni');
+                const direccion = button.getAttribute('data-direccion');
+                const telefono = button.getAttribute('data-telefono');
+                const email = button.getAttribute('data-email');
+                const fechaNacimiento = button.getAttribute('data-fecha');
 
-        // Asignar los valores a los campos del formulario en el modal
-        document.getElementById('id').value = id;
-        document.getElementById('nombre').value = nombre;
-        document.getElementById('apellido').value = apellido;
-        document.getElementById('dni').value = dni;
-        document.getElementById('direccion').value = direccion;
-        document.getElementById('telefono').value = telefono;
-        document.getElementById('email').value = email;
-        document.getElementById('fecha_nacimiento').value = fechaNacimiento;
-    });
-});
+                // Asignar los valores a los campos del formulario en el modal
+                document.getElementById('id_afiliado').value = id;
+                document.getElementById('nombre').value = nombre;
+                document.getElementById('apellido').value = apellido;
+                document.getElementById('dni').value = dni;
+                document.getElementById('direccion').value = direccion;
+                document.getElementById('telefono').value = telefono;
+                document.getElementById('email').value = email;
+                document.getElementById('fecha_nacimiento').value = fechaNacimiento;
+            });
+        });
 
 </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
