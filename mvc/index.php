@@ -17,7 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controller->CerrarSesion();
 }elseif (isset($_GET['home'])) {
     include '/xampp/htdocs/hominis/mvc/resources/views/home.php';
-} else {
+}elseif (isset($_GET['action']) && $_GET['action'] === 'delet' && isset($_GET['id'])) {
+    $afiliacion->eliminar($_GET['id']);
+} elseif (isset($_GET['action']) && $_GET['action'] === 'editarDatos') {
+    $afiliacion->editarDatos();
+}else {
     include '/xampp/htdocs/hominis/mvc/resources/views/login.php';
 }
 

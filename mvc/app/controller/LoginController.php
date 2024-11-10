@@ -48,6 +48,7 @@ class LoginController{
                 $params["secure"], $params["httponly"]
         );
         // Finalmente, destruye la sesión
+        session_unset();
         session_destroy();
         // Redirige al usuario a la página de inicio de sesión
         header('Location: http://localhost/hominis/mvc/resources/views/login.php');
