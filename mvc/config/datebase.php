@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 //*Se establecen las  credenciales de la conexión de una base de datos
     $host= 'localhost';
@@ -14,6 +13,3 @@
     }
     
 ?>
-=======
-//*Se establecen las  credenciales de la conexión de una base de datos
->>>>>>> c50f959794022076a8e7c752ef14571f711fe094

@@ -4,16 +4,11 @@
     box-sizing: border-box;
 }
 .login{
-<<<<<<< HEAD
   background-image: url('../img/background-login.jpg');
-=======
-  background-image: url('../img/fondo_login.jpg');
->>>>>>> c50f959794022076a8e7c752ef14571f711fe094
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
-<<<<<<< HEAD
 }
 .offcanvas-body, .offcanvas-header{
   background-color: #0D6EFD !important;
@@ -22,6 +17,3 @@
   height: 18rem;
   margin:  0 8rem;
 }
-=======
-}
->>>>>>> c50f959794022076a8e7c752ef14571f711fe094
