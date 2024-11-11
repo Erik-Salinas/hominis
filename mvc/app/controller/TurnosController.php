@@ -16,7 +16,7 @@ class TurnosController {
     }
 
     public function crearTurno() {
-        session_start(); // Iniciar la sesión
+        session_start();
 
         if (isset($_POST['afiliado_id'], $_POST['especialidad_id'], $_POST['fecha_turno'], $_POST['hora_turno'], $_POST['empleado_id'])) {
             $id_afiliado = $_POST['afiliado_id'];

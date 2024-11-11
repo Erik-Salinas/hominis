@@ -11,7 +11,7 @@ class AfiliacionModel {
                 VALUES (:nombre, :apellido, :dni, :direccion, :telefono, :email, :fecha_nacimiento)";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($datos); 
-        return $stmt->rowCount() > 0; // Devuelve true si se insertó al menos una fila
+        return $stmt->rowCount() > 0;
 
     }
 }

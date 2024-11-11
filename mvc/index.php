@@ -10,7 +10,6 @@ $afiliacion = new AfiliacionController($pdo);
 $turnosController = new TurnosController($pdo);
 $modificarTurnosController = new ModificarTurnosController($pdo);
 
-// Manejo de formularios POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['formulario'])) {
         switch ($_POST['formulario']) {
@@ -44,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $modificarTurnosController->editarTurno($_GET['id_turno']);
             }
             break;
-        case 'eliminar_turno':  // Este es el nuevo caso para eliminar el turno
+        case 'eliminar_turno':
             if (isset($_GET['id_turno'])) {
                 $modificarTurnosController->eliminarTurno($_GET['id_turno']);
             }

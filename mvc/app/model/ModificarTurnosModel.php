@@ -60,13 +60,11 @@ class ModificarTurnosModel {
     }
 public function eliminarTurno($id_turno) {
     try {
-        // Consulta para eliminar el turno
         $query = "DELETE FROM turnos WHERE id_turno = :id_turno";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id_turno', $id_turno, PDO::PARAM_INT);
         return $stmt->execute();
     } catch (PDOException $e) {
-        // Manejo de errores
         return false;
     }
 }
