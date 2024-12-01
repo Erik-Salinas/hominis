@@ -14,24 +14,35 @@ class AfiliacionModel {
         return $stmt->rowCount() > 0; // Devuelve true si se insertó al menos una fila
 
     }
-    public function editarAfiliado($id_afiliado, $dni, $nombre, $apellido, $direccion, $telefono, $email, $fecha_nacimiento) {
-        // Llamada a eliminarAfiliado
-        $this->eliminarAfiliado($id_afiliado);
-            $sql = 'UPDATE afiliaciones SET nombre = :nombre, apellido = :apellido, direccion = :direccion, telefono = :telefono, email = :email, fecha_nacimiento = :fecha_nacimiento, dni = :dni WHERE id_afiliado = :id_afiliado';
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->bindValue(':id_afiliado', $id_afiliado);
-            $stmt->bindValue(':dni', $dni);
-            $stmt->bindValue(':nombre', $nombre);
-            $stmt->bindValue(':apellido', $apellido);
-            $stmt->bindValue(':direccion', $direccion);
-            $stmt->bindValue(':telefono', $telefono);
-            $stmt->bindValue(':email', $email);
-            $stmt->bindValue(':fecha_nacimiento', $fecha_nacimiento);
+    public function editarAfiliado($datos) {
+        $sql = 'UPDATE afiliaciones SET 
+            nombre = :nombre, 
+            apellido = :apellido, 
+            dni = :dni, 
+            direccion = :direccion, 
+            telefono = :telefono, 
+            email = :email, 
+            fecha_nacimiento = :fecha_nacimiento 
+        WHERE id_afiliado = :id_afiliado';
     
-            
+        $stmt = $this->pdo->prepare($sql);
+        
+        // Asegúrate de que el id_afiliado esté en el array de datos
+        $stmt->execute([
+            ':nombre' => $datos['nombre'],
+            ':apellido' => $datos['apellido'],
+            ':dni' => $datos['dni'],
+            ':direccion' => $datos['direccion'],
+            ':telefono' => $datos['telefono'],
+            ':email' => $datos['email'],
+            ':fecha_nacimiento' => $datos['fecha_nacimiento'],
+            ':id_afiliado' => $datos['id_afiliado']
+        ]);
     
-            $stmt->execute();
+        return $stmt->rowCount() > 0; // Devuelve true si la actualización fue exitosa
     }
+    
+    
     
     
     public function eliminarAfiliado($id) {

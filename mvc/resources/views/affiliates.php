@@ -116,7 +116,8 @@ foreach ($afiliados as $afiliado) {
             </div>
             <div class="modal-body d-flex align-items-center justify-content-center flex-column">
     <form action="../../index.php?action=editarDatos" method="post" class="border border-1 border-dark rounded w-100 p-3 d-flex flex-wrap flex-column gap-1 mt-3">
-        <input type="number" id="id_afiliado" name="id_afiliado" value="">
+    <input type="number" id="id_afiliado" name="id_afiliado" value="<?php echo $afiliado['id_afiliado']; ?>">
+
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
         <label for="apellido">Apellido:</label>
