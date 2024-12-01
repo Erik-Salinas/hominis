@@ -10,11 +10,11 @@
             </div>
 
             <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-                <div class="offcanvas-header">
+                <div class="offcanvas-header bg-primary">
                 <img src="/hominis/mvc/resources/public/img/hominis-logo.png" alt="Logo de hominis" class="img-fluid w-50 m-auto">
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body">
+                <div class="offcanvas-body bg-primary">
                     <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
                         <li class="nav-item">
                             <a class="nav-link fs-5 <?= !isset($_GET['action']) ? 'active' : '' ?>" href="/hominis/mvc/app/views/home.php">Inicio</a>

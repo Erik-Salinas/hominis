@@ -9,7 +9,7 @@
 <body>
     <?php require '/xampp/htdocs/hominis/mvc/app/views/header.php'; ?>
     <div class="container mt-5">
-        <h1>Agendar Turno</h1>
+        <h1 class=" pt-3">Agendar Turno</h1>
         <form action="/hominis/mvc/index.php?controller=Turnos&action=crearTurno" method="POST">
             <input type="hidden" name="formulario" value="turno">
 
