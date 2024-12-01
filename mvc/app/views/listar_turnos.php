@@ -22,7 +22,7 @@
             <?php unset($_SESSION['mensaje']); // Eliminar mensaje después de mostrarlo ?>
         <?php endif; ?>
 
-        <h1 class="text-center">Lista de Turnos</h1>
+        <h1 class="text-center pt-3">Lista de Turnos</h1>
         <table class="table table-bordered">
             <thead>
                 <tr>
