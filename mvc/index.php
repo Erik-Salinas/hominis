@@ -13,7 +13,7 @@ $modificarTurnosController = new ModificarTurnosController($pdo);
 
 // Verifica si la solicitud es POST y de qué formulario proviene
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST'  && $_GET['action'] === 'editarDatos') {
+/* if ($_SERVER['REQUEST_METHOD'] === 'POST'  && $_GET['action'] === 'editarDatos') {
     $id_afiliado = $_POST['id_afiliado'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'  && $_GET['action'] === 'editarDatos')
     
     $afiliacion->editarDatos($id_afiliado,$nombre, $apellido, $dni,$direccion,$telefono,$email,$fecha_nacimiento);
 
-}elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+}else */if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['formulario'])) {
         switch ($_POST['formulario']) {
             case 'login':
@@ -40,9 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'  && $_GET['action'] === 'editarDatos')
             case 'actualizar_turno':
                 $modificarTurnosController->actualizarTurno();
                 break;
-            case 'editarDatos':
-                $afiliacion->editarDatos();
-            break;
         }
     }
 }elseif (isset($_GET['action'])) {
