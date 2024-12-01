@@ -68,10 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'  && $_GET['action'] === 'editarDatos')
                 $afiliacion->eliminar($_GET['id']);
             }
             break;
-        case 'editarDatos':
-            $afiliacion->editarDatos();
-            break;
-
         default:
             include '/xampp/htdocs/hominis/mvc/app/views/login.php';
             break;
