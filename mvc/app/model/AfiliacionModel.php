@@ -14,6 +14,7 @@ class AfiliacionModel {
         return $stmt->rowCount() > 0; // Devuelve true si se insertó al menos una fila
 
     }
+<<<<<<< HEAD
     public function editarAfiliado($datos) {
         $sql = 'UPDATE afiliaciones SET 
             nombre = :nombre, 
@@ -42,6 +43,30 @@ class AfiliacionModel {
         return $stmt->rowCount() > 0; // Devuelve true si la actualización fue exitosa
     }
     
+=======
+public function editarAfiliado($id_afiliado, $nombre, $apellido, $dni, $direccion, $telefono, $email, $fecha_nacimiento) {
+    $sql = 'UPDATE afiliaciones 
+            SET nombre = :nombre, 
+                apellido = :apellido, 
+                dni = :dni, 
+                direccion = :direccion, 
+                telefono = :telefono, 
+                email = :email, 
+                fecha_nacimiento = :fecha_nacimiento 
+            WHERE id_afiliado = :id_afiliado';
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':nombre', $nombre);
+    $stmt->bindValue(':apellido', $apellido);
+    $stmt->bindValue(':dni', $dni);
+    $stmt->bindValue(':direccion', $direccion);
+    $stmt->bindValue(':telefono', $telefono);
+    $stmt->bindValue(':email', $email);
+    $stmt->bindValue(':fecha_nacimiento', $fecha_nacimiento);
+    $stmt->bindValue(':id_afiliado', $id_afiliado); // Identificador único para actualizar una fila específica
+    $stmt->execute();
+}
+
+>>>>>>> ec57482006e58267652844fdd26f8d29429c3c13
     
     
     
