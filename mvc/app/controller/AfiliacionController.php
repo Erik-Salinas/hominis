@@ -60,29 +60,9 @@ class AfiliacionController
     }
 
     // Edita los datos de un afiliado existente
-    public function editarDatos()
+    public function editarDatos($id_afiliado,$nombre, $apellido, $dni,$direccion,$telefono,$email,$fecha_nacimiento)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id_afiliado = $_POST['id_afiliado'] ?? null;
-
-            // Verificar que el id_afiliado no esté vacío o nulo
-            if (!$id_afiliado) {
-                $_SESSION['mensaje'] = 'Error: ID no recibido.';
-                header('Location: /hominis/mvc/app/views/affiliates.php');
-                exit();
-            }
-
-            // Resto de los datos a actualizar
-            $nombre = $_POST['nombre'];
-            $apellido = $_POST['apellido'];
-            $dni = $_POST['dni'];
-            $direccion = $_POST['direccion'];
-            $telefono = $_POST['telefono'];
-            $email = $_POST['email'];
-            $fecha_nacimiento = $_POST['fecha_nacimiento'];
-
-            // Llamar al modelo para actualizar los datos
-            $resultado = $this->modelo->editarAfiliado($id_afiliado, $dni, $nombre, $apellido, $direccion, $telefono, $email, $fecha_nacimiento);
+            $resultado = $this->modelo->editarAfiliado($id_afiliado,$nombre, $apellido, $dni,$direccion,$telefono,$email,$fecha_nacimiento);
 
             if ($resultado) {
                 // Si la actualización es exitosa
@@ -95,7 +75,6 @@ class AfiliacionController
                 header('Location: /hominis/mvc/app/views/affiliates.php');
                 exit();
             }
-        }
     }
 
     // Elimina un afiliado por ID
