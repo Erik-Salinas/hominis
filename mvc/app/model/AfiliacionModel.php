@@ -45,6 +45,8 @@ class AfiliacionModel {
     }
 
     
+    
+    
     public function eliminarAfiliado($id) {
         echo "ID de afiliado para eliminar: $id"; // Agregar para depurar
         try {

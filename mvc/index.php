@@ -40,9 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'  && $_GET['action'] === 'editarDatos')
             case 'actualizar_turno':
                 $modificarTurnosController->actualizarTurno();
                 break;
-            case 'editarDatos':
-                $afiliacion->editarDatos();
-            break;
         }
     }
 }elseif (isset($_GET['action'])) {
