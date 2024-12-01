@@ -30,6 +30,8 @@ class AfiliacionController
         if ($resultado) {
             // Redirige a la misma página pero con un parámetro para mostrar la modal
             header('Location: http://localhost/hominis/mvc/resources/views/affiliates.php?modal=1');
+            $_SESSION['mensaje'] = "Afiliado agregado correctamente.";
+            header('Location: http://localhost/hominis/mvc/app/views/affiliates.php');
             exit();
         } else {
             echo "Error al procesar la afiliación.";
