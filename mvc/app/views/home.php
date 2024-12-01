@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<?php require '/xampp/htdocs/hominis/mvc/resources/views/header.php'; ?>
+<?php require '/xampp/htdocs/hominis/mvc/app/views/header.php'; ?>
     <main>
         <br>
         <br>
@@ -43,7 +43,7 @@ foreach ($empleados as $empleado) {
     // Usamos comillas invertidas (heredoc) para construir el HTML
     $contenido .= <<<HTML
     <div class='d-flex justify-content-center mt-5'>
-        <img src='../public/img/iconoPersona.jpg' alt='Icono Persona' class='homeEmployee'>
+        <img src='/hominis/mvc/resources/public/img/iconoPersona.jpg' alt='Icono Persona' class='homeEmployee'>
         <div>
             <p class='fs-5'> <span class='fw-bold'> ID:  </span>{$empleado['id_empleado']}</p>
             <p class='fs-5'> <span class='fw-bold'> Nombre y Apellido:  </span>{$nombre} {$apellido}</p>

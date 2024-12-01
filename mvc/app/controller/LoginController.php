@@ -28,9 +28,9 @@ class LoginController{
                 $_SESSION['password'] = $password;
                 var_dump($_SESSION);
     
-                header('Location: http://localhost/hominis/mvc/resources/views/home.php');
+                header('Location: http://localhost/hominis/mvc/app/views/home.php');
             } else {
-                header('Location: http://localhost/hominis/mvc/resources/views/login.php');
+                header('Location: http://localhost/hominis/mvc/app/views/login.php');
             }
             
             exit();
@@ -52,7 +52,7 @@ class LoginController{
         session_unset();
         session_destroy();
         // Redirige al usuario a la página de inicio de sesión
-        header('Location: http://localhost/hominis/mvc/resources/views/login.php');
+        header('Location: http://localhost/hominis/mvc/app/views/login.php');
         exit();
         }
     } 

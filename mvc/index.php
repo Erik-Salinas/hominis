@@ -61,13 +61,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
 
         default:
-            include '/xampp/htdocs/hominis/mvc/resources/views/login.php';
+            include '/xampp/htdocs/hominis/mvc/app/views/login.php';
             break;
     }
 } elseif (isset($_GET['home'])) {
-    include '/xampp/htdocs/hominis/mvc/resources/views/home.php';
+    include '/xampp/htdocs/hominis/mvc/app/views/home.php';
 } else {
-    include '/xampp/htdocs/hominis/mvc/resources/views/login.php';
+    include '/xampp/htdocs/hominis/mvc/app/views/login.php';
 }
 ?>
 

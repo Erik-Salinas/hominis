@@ -30,12 +30,12 @@ class AfiliacionController
         if ($resultado) {
             // Almacenamos un mensaje de éxito en la sesión y redirigimos
             $_SESSION['mensaje'] = "Afiliación procesada correctamente.";
-            header('Location: /hominis/mvc/resources/views/record.php');
+            header('Location: /hominis/mvc/app/views/record.php');
             exit();
         } else {
             // En caso de error, mostramos un mensaje
             $_SESSION['mensaje'] = "Error al procesar la afiliación. El DNI o el email pueden estar duplicados.";
-            header('Location: /hominis/mvc/resources/views/affiliates.php');
+            header('Location: /hominis/mvc/app/views/affiliates.php');
             exit();
         }
     }
@@ -49,7 +49,7 @@ class AfiliacionController
             // Verificar que el id_afiliado no esté vacío o nulo
             if (!$id_afiliado) {
                 $_SESSION['mensaje'] = 'Error: ID no recibido.';
-                header('Location: /hominis/mvc/resources/views/affiliates.php');
+                header('Location: /hominis/mvc/app/views/affiliates.php');
                 exit();
             }
 
@@ -68,12 +68,12 @@ class AfiliacionController
             if ($resultado) {
                 // Si la actualización es exitosa
                 $_SESSION['mensaje'] = "Datos actualizados correctamente.";
-                header('Location: /hominis/mvc/resources/views/affiliates.php');
+                header('Location: /hominis/mvc/app/views/affiliates.php');
                 exit();
             } else {
                 // Si hay error
                 $_SESSION['mensaje'] = "Error al actualizar los datos.";
-                header('Location: /hominis/mvc/resources/views/affiliates.php');
+                header('Location: /hominis/mvc/app/views/affiliates.php');
                 exit();
             }
         }
@@ -89,7 +89,7 @@ class AfiliacionController
             $_SESSION['mensaje'] = "No se pudo eliminar el afiliado.";
         }
         // Redirigir a la lista de afiliados
-        header('Location: /hominis/mvc/resources/views/affiliates.php');
+        header('Location: /hominis/mvc/app/views/affiliates.php');
         exit();
     }
 }

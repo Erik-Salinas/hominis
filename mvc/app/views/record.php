@@ -7,10 +7,10 @@
     <title>Formulario de Afiliación</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../public/css/admin.css">
+    <link rel="stylesheet" href="../../resources/public/css/admin.css">
 </head>
 <?php 
-require '/xampp/htdocs/hominis/mvc/resources/views/header.php';
+require '/xampp/htdocs/hominis/mvc/app/views/header.php';
 if (!isset($_SESSION['user'])) {
     header('Location: login.php');
     exit();
