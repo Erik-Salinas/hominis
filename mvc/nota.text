@@ -1,0 +1,8 @@
+app
+-controller
+-model
+-views
+config
+resources
+-public
+index.php
