@@ -68,10 +68,6 @@ $modificarTurnosController = new ModificarTurnosController($pdo);
                 $afiliacion->eliminar($_GET['id']);
             }
             break;
-        case 'editarDatos':
-            $afiliacion->editarDatos();
-            break;
-
         default:
             include '/xampp/htdocs/hominis/mvc/app/views/login.php';
             break;

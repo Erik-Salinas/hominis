@@ -14,27 +14,35 @@ class AfiliacionModel {
         return $stmt->rowCount() > 0; // Devuelve true si se insertó al menos una fila
 
     }
-public function editarAfiliado($id_afiliado, $nombre, $apellido, $dni, $direccion, $telefono, $email, $fecha_nacimiento) {
-    $sql = 'UPDATE afiliaciones 
-            SET nombre = :nombre, 
-                apellido = :apellido, 
-                dni = :dni, 
-                direccion = :direccion, 
-                telefono = :telefono, 
-                email = :email, 
-                fecha_nacimiento = :fecha_nacimiento 
-            WHERE id_afiliado = :id_afiliado';
-    $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':nombre', $nombre);
-    $stmt->bindValue(':apellido', $apellido);
-    $stmt->bindValue(':dni', $dni);
-    $stmt->bindValue(':direccion', $direccion);
-    $stmt->bindValue(':telefono', $telefono);
-    $stmt->bindValue(':email', $email);
-    $stmt->bindValue(':fecha_nacimiento', $fecha_nacimiento);
-    $stmt->bindValue(':id_afiliado', $id_afiliado); // Identificador único para actualizar una fila específica
-    $stmt->execute();
+    public function eliminarAfiliado($dni){
+        $sql = 'DELETE FROM afiliaciones WHERE dni = :dni';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':dni', $dni);  // Víncula el valor directamente
+        $stmt->execute();
+    }    
 }
+
+    public function editarAfiliado($id_afiliado, $nombre, $apellido, $dni, $direccion, $telefono, $email, $fecha_nacimiento) {
+        $sql = 'UPDATE afiliaciones 
+                SET nombre = :nombre, 
+                    apellido = :apellido, 
+                    dni = :dni, 
+                    direccion = :direccion, 
+                    telefono = :telefono, 
+                    email = :email, 
+                    fecha_nacimiento = :fecha_nacimiento 
+                WHERE id_afiliado = :id_afiliado';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':nombre', $nombre);
+        $stmt->bindValue(':apellido', $apellido);
+        $stmt->bindValue(':dni', $dni);
+        $stmt->bindValue(':direccion', $direccion);
+        $stmt->bindValue(':telefono', $telefono);
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':fecha_nacimiento', $fecha_nacimiento);
+        $stmt->bindValue(':id_afiliado', $id_afiliado); // Identificador único para actualizar una fila específica
+        $stmt->execute();
+    }
 
     
     
@@ -52,5 +60,6 @@ public function editarAfiliado($id_afiliado, $nombre, $apellido, $dni, $direccio
             echo "Error en eliminarAfiliado: " . $e->getMessage();
         }
     }
-    
-    }
+
+
+    ?>
