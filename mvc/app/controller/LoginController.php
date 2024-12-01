@@ -1,6 +1,7 @@
 <?php
 require_once '/xampp/htdocs/hominis/mvc/app/model/LoginModel.php';
 
+//HOLA VICKY, TU MENSAJE FUE RECIBIDO CON EXITO 🥳:)
 //HOLA ERIK, ESPERO QUE TE LLEGUE MI MENSAJE :)
 class LoginController{
     private $model;
@@ -27,9 +28,9 @@ class LoginController{
                 $_SESSION['password'] = $password;
                 var_dump($_SESSION);
     
-                header('Location: http://localhost/hominis/mvc/resources/views/home.php');
+                header('Location: http://localhost/hominis/mvc/app/views/home.php');
             } else {
-                header('Location: http://localhost/hominis/mvc/resources/views/login.php');
+                header('Location: http://localhost/hominis/mvc/app/views/login.php');
             }
             
             exit();
@@ -48,9 +49,10 @@ class LoginController{
                 $params["secure"], $params["httponly"]
         );
         // Finalmente, destruye la sesión
+        session_unset();
         session_destroy();
         // Redirige al usuario a la página de inicio de sesión
-        header('Location: http://localhost/hominis/mvc/resources/views/login.php');
+        header('Location: http://localhost/hominis/mvc/app/views/login.php');
         exit();
         }
     } 

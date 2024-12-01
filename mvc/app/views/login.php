@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../public/css/admin.css"> -->
-    <link rel="stylesheet" href="/hominis/mvc/resources/public/css/admin.css">
+    <link rel="stylesheet" href="../../resources/public/css/admin.css">
     <title>Login</title>
 </head>
 <body>
+    <?php
+    // Evitar que se almacene en caché
+   // Evitar que se almacene en caché
+header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: 0');
+
+
+    ?>
     <main>
         <section class="login   d-flex  align-items-center justify-content-center">
             <form action="/hominis/mvc/index.php" method="post" class=" d-flex flex-column bg-white w-25 p-4 rounded border border-2" autocomplete="off">
