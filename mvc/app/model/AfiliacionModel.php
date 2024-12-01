@@ -73,6 +73,8 @@ public function editarAfiliado($id_afiliado, $nombre, $apellido, $dni, $direccio
 
 >>>>>>> ec57482006e58267652844fdd26f8d29429c3c13
     
+    
+    
     public function eliminarAfiliado($id) {
         echo "ID de afiliado para eliminar: $id"; // Agregar para depurar
         try {
