@@ -13,7 +13,7 @@ class ModificarTurnosController {
         $especialidades = $this->model->obtenerEspecialidades();
         $empleados = $this->model->obtenerEmpleados();
 
-        require '/xampp/htdocs/hominis/mvc/resources/views/listar_turnos.php';
+        require '/xampp/htdocs/hominis/mvc/app/views/listar_turnos.php';
     }
 
     public function editarTurno($id_turno) {
@@ -22,7 +22,7 @@ class ModificarTurnosController {
         $empleados = $this->model->obtenerEmpleados();
         $afiliados = $this->model->obtenerAfiliados();
         
-        require '/xampp/htdocs/hominis/mvc/resources/views/editar_turno.php';
+        require '/xampp/htdocs/hominis/mvc/app/views/editar_turno.php';
     }
 
 public function actualizarTurno() {

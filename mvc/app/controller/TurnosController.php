@@ -12,7 +12,7 @@ class TurnosController {
         $especialidades = $this->model->obtenerEspecialidades();
         $afiliados = $this->model->obtenerAfiliados();
         $empleados = $this->model->obtenerEmpleados();
-        require '/xampp/htdocs/hominis/mvc/resources/views/turnos.php';
+        require '/xampp/htdocs/hominis/mvc/app/views/turnos.php';
     }
 
     public function crearTurno() {
