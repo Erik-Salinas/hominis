@@ -10,9 +10,37 @@
     <link rel="stylesheet" href="../public/css/admin.css">
 </head>
 
+<<<<<<< HEAD:mvc/resources/views/home.php
+                <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header">
+                        <img src="../public/img/hominis-logo.png" alt="Logo de hominis" class="img-fluid w-50 m-auto">
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active fs-5" aria-current="page" href="/hominis/mvc/resources/views/home.php">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link  fs-5" href="/hominis/mvc/resources/views/affiliates.php">Afiliados</a>                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fs-5" href="/hominis/mvc/resources/views/shifts.php">Turnos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="fs-6 btn btn-danger" href="/hominis/mvc/index.php?action=logout">Cerrar Sesion</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+=======
 <body>
 <?php require '/xampp/htdocs/hominis/mvc/app/views/header.php'; ?>
     <main>
+>>>>>>> erik:mvc/app/views/home.php
         <br>
         <br>
         <br>
@@ -21,6 +49,7 @@ require '/xampp/htdocs/hominis/mvc/config/datebase.php';
 $user = $_SESSION['user'];
 $password = $_SESSION['password'];
 
+// Obtener los datos del empleado
 $sql = "SELECT * FROM empleado WHERE user = :user AND password = :password";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(':user', $user);
@@ -33,7 +62,7 @@ $empleados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // Inicializamos una variable para almacenar el contenido
 $contenido = "";
 
-// Mostrar los datos
+// Mostrar los datos del empleado
 foreach ($empleados as $empleado) {
     // Aplicar ucfirst antes de generar el contenido HTML
     $nombre = ucfirst($empleado['nombre']);
@@ -60,6 +89,46 @@ HTML;
     // Cerramos las etiquetas del div
     $contenido .= "</div></div>";
 }
+
+// Obtener los últimos 5 registros de turnos
+$sql = "SELECT * FROM turnos ORDER BY id_turno DESC LIMIT 5";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$turnos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//
+// Mostrar los turnos
+$contenido .= "<table class='table table-primary table-hover mt-5'>
+        <h3 class='mt-5 text-decoration-underline'>Ultimos Turnos Dados</h3>
+        <tr>
+        <th scope='col' class='fs-5 text-center'>Nombre y Apellido</th>
+        <th scope='col' class='fs-5 text-center'>DNI</th>
+        <th scope='col' class='fs-5 text-center'>Email</th>
+        <th scope='col' class='fs-5 text-center'>Telefono</th>
+        <th scope='col' class='fs-5 text-center'>Especialidad</th>
+        <th scope='col'class='fs-5 text-center'>Fecha y Hora</th>
+        </tr>
+    ";
+
+foreach ($turnos as $turno) {
+    $nombre = ucfirst($turno['nombre_paciente']);
+    $apellido = ucfirst($turno['apellido_paciente']);
+    $especialidad = ucfirst($turno['especialidad']);
+    $fechaTurno = new DateTime($turno['diaHora']);
+    $fechaFormateada = $fechaTurno->format('d/m/Y H:i'); // Formatear la fecha
+
+    $contenido .= <<<HTML
+    <tr>
+        <td class='fs-5 text-center' > {$nombre} {$apellido}</td>
+        <td class='fs-5 text-center'> {$turno['dni_paciente']}</td>
+        <td class='fs-5 text-center'> {$turno['email_paciente']}</td>
+        <td class='fs-5 text-center'>{$turno['tel_paciente']}</td>
+        <td class='fs-5 text-center'>{$especialidad}</td>           
+        <td class='fs-5 text-center'>{$fechaFormateada}hs</td>
+    </tr>
+HTML;
+}
+
+$contenido .= "</table>";
 
 // Finalmente, mostramos todo el contenido de una vez
 

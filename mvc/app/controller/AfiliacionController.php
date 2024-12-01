@@ -28,9 +28,28 @@ class AfiliacionController
         $resultado = $this->modelo->guardarAfiliacion($datos);
 
         if ($resultado) {
+<<<<<<< HEAD
+            // Redirige a la misma página pero con un parámetro para mostrar la modal
+            header('Location: http://localhost/hominis/mvc/resources/views/affiliates.php?modal=1');
+            exit();
+        } else {
+            echo "Error al procesar la afiliación.";
+        }
+    }
+
+    public function editar(){
+
+        $dni = htmlspecialchars($_POST['dni']);
+
+        $resultado = $this->modelo->editarAfiliado($dni);
+        if ($resultado) {
+            // Redirige a la misma página pero con un parámetro para mostrar la modal
+            header('Location: http://localhost/hominis/mvc/resources/views/record.php');
+=======
             // Almacenamos un mensaje de éxito en la sesión y redirigimos
             $_SESSION['mensaje'] = "Afiliación procesada correctamente.";
             header('Location: /hominis/mvc/app/views/record.php');
+>>>>>>> erik
             exit();
         } else {
             // En caso de error, mostramos un mensaje
