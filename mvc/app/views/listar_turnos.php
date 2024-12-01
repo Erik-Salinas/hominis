@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Turnos</title>
-    <link rel="stylesheet" href="../public/css/admin.css">
+    <link rel="stylesheet" href="../../resources/public/css/admin.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
+    <br>
     <div class="container mt-5">
         <?php require '/xampp/htdocs/hominis/mvc/app/views/header.php'; ?>
 
@@ -22,7 +23,7 @@
             <?php unset($_SESSION['mensaje']); // Eliminar mensaje después de mostrarlo ?>
         <?php endif; ?>
 
-        <h1 class="text-center pt-3">Lista de Turnos</h1>
+        <h1 class="text-center mt-3 text-dark mb-4">Lista de Turnos</h1>
         <table class="table table-bordered">
             <thead>
                 <tr>

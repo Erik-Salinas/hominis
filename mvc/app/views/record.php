@@ -78,6 +78,7 @@ if (!isset($_SESSION['user'])) {
 
             document.getElementById('confirmarEnvio').addEventListener('click', function() {
                 form.submit(); // Envía el formulario
+                header('/hominis/mvc/app/views/redord.php');
             });
         });
     </script>

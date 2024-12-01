@@ -7,9 +7,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
+    <br>
     <?php require '/xampp/htdocs/hominis/mvc/app/views/header.php'; ?>
     <div class="container mt-5">
-        <h1 class=" pt-3">Agendar Turno</h1>
+        <h1 class="text-center mt-3 text-dark mb-4">Agendar Turno</h1>
         <form action="/hominis/mvc/index.php?controller=Turnos&action=crearTurno" method="POST">
             <input type="hidden" name="formulario" value="turno">
 
