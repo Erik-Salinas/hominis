@@ -14,36 +14,6 @@ class AfiliacionModel {
         return $stmt->rowCount() > 0; // Devuelve true si se insertó al menos una fila
 
     }
-<<<<<<< HEAD
-    public function editarAfiliado($datos) {
-        $sql = 'UPDATE afiliaciones SET 
-            nombre = :nombre, 
-            apellido = :apellido, 
-            dni = :dni, 
-            direccion = :direccion, 
-            telefono = :telefono, 
-            email = :email, 
-            fecha_nacimiento = :fecha_nacimiento 
-        WHERE id_afiliado = :id_afiliado';
-    
-        $stmt = $this->pdo->prepare($sql);
-        
-        // Asegúrate de que el id_afiliado esté en el array de datos
-        $stmt->execute([
-            ':nombre' => $datos['nombre'],
-            ':apellido' => $datos['apellido'],
-            ':dni' => $datos['dni'],
-            ':direccion' => $datos['direccion'],
-            ':telefono' => $datos['telefono'],
-            ':email' => $datos['email'],
-            ':fecha_nacimiento' => $datos['fecha_nacimiento'],
-            ':id_afiliado' => $datos['id_afiliado']
-        ]);
-    
-        return $stmt->rowCount() > 0; // Devuelve true si la actualización fue exitosa
-    }
-    
-=======
 public function editarAfiliado($id_afiliado, $nombre, $apellido, $dni, $direccion, $telefono, $email, $fecha_nacimiento) {
     $sql = 'UPDATE afiliaciones 
             SET nombre = :nombre, 
@@ -66,7 +36,6 @@ public function editarAfiliado($id_afiliado, $nombre, $apellido, $dni, $direccio
     $stmt->execute();
 }
 
->>>>>>> ec57482006e58267652844fdd26f8d29429c3c13
     
     
     
