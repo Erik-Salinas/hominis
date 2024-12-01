@@ -54,6 +54,4 @@ class AfiliacionModel {
     }
 
 }
-
-
     ?>
